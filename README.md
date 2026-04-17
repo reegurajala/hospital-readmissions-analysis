@@ -1,23 +1,38 @@
-# hospital-readmissions-analysis
-## Query 1 - State-Level Readmission Performance
-## Aggregates average excess readmission ratio by state to identify geographic patterns.
-## A ratio above 1.0 means a state is readmitting more patients than expected.
-## Query 2 - Worst Performing Conditions Nationally
-## Compares all 6 conditions by average excess readmission ratio to determine
-## which medical conditions drive the most avoidable readmissions across the country.
-## Query 3 - Hospital Rankings Within Each State
-## Uses a RANK() window function partitioned by state to rank every hospital
-## relative to others in the same state, allowing fair geographic comparisons.
-## Query 4 - Hospital Performance Tier Classification
-## Uses CASE WHEN to bucket hospitals into performance tiers based on their
-## excess readmission ratio, translating raw numbers into actionable risk categories.
-## Query 5 - Worst Overall Hospitals Across Multiple Conditions
-## Uses a CTE to first calculate each hospital's average ratio across all conditions,
-## then filters to only hospitals tracked on 3+ conditions for statistical reliability.
-## Query 6 - Gap Between Predicted and Expected Readmission Rates
-## Measures how far hospitals deviate from expected performance by state and condition.
-## Larger gaps indicate states where hospitals are most consistently underperforming.
-## Query 7 - Performance Tier Distribution by Condition
-## Uses a window function inside an aggregation to calculate what percentage of
-## hospitals fall into each risk tier per condition, revealing which conditions
-## have the most systemic performance problems across the entire hospital system.
+# Hospital Readmissions Analysis
+
+## Overview
+An end-to-end SQL and Python analysis of U.S. hospital readmission rates using CMS Hospital Readmissions Reduction Program (HRRP) data. The project investigates which states, hospitals, and medical conditions drive excess readmissions across 18,330 hospital-condition records.
+
+**Business Question:** Which hospitals and conditions drive excess readmissions, and what patterns predict poor performance?
+
+## Dataset
+- **Source:** Centers for Medicare & Medicaid Services (CMS)
+- **Link:** https://data.cms.gov/provider-data/dataset/9n3s-kdb3
+- **Records:** 18,330 hospital-condition pairs
+- **Conditions Tracked:** AMI, COPD, Heart Failure, Pneumonia, Hip/Knee, CABG
+- **Performance Period:** July 2021 – June 2024
+
+## Tools & Technologies
+- Python (pandas, matplotlib, seaborn)
+- SQL (SQLite)
+- Jupyter Notebook
+
+## Key Findings
+1. **Massachusetts, New Jersey, and Florida** are the worst performing states for excess readmissions nationally
+2. **Hip/Knee replacements** have the highest proportion of High Risk hospitals at 23%, more than any other condition
+3. **Oroville Hospital (CA)** and **Winchester Hospital (MA)** are the worst overall performers when averaged across multiple conditions
+4. Massachusetts appears consistently across every analysis — state-level averages, rate gaps, and worst hospital rankings — suggesting a systemic issue rather than isolated poor performers
+5. **COPD** has the most evenly distributed performance of any condition, with only 2.88% of hospitals classified as High Risk
+
+## SQL Concepts Demonstrated
+- Aggregations and GROUP BY
+- Window functions (RANK, SUM OVER, PARTITION BY)
+- Common Table Expressions (CTEs)
+- CASE WHEN performance tier classification
+- Multi-condition filtering and NULL handling
+
+## How to Run
+1. Download the dataset CSV from the link above
+2. Clone this repository and open the notebook in Jupyter
+3. Update the file path in the first cell to point to your downloaded CSV
+4. Run all cells in order
