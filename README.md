@@ -1,7 +1,7 @@
 # Hospital Readmissions Analysis
 
 ## Overview
-An end-to-end SQL and Python analysis of U.S. hospital readmission rates using CMS Hospital Readmissions Reduction Program (HRRP) data. The project investigates which states, hospitals, and medical conditions drive excess readmissions across 18,330 hospital-condition records.
+An end-to-end SQL, Python, and Power BI analysis of U.S. hospital readmission rates using CMS Hospital Readmissions Reduction Program (HRRP) data. The project investigates which states, hospitals, and medical conditions drive excess readmissions across 18,330 hospital-condition records.
 
 **Business Question:** Which hospitals and conditions drive excess readmissions, and what patterns predict poor performance?
 
@@ -16,6 +16,7 @@ An end-to-end SQL and Python analysis of U.S. hospital readmission rates using C
 - Python (pandas, matplotlib, seaborn)
 - SQL (SQLite)
 - Jupyter Notebook
+- Power BI (interactive dashboard)
 
 ## Key Findings
 1. **Massachusetts, New Jersey, and Florida** are the worst performing states for excess readmissions nationally
